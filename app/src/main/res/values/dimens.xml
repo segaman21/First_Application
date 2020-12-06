@@ -20,6 +20,7 @@
     <dimen name="dim_100dp">100dp</dimen>
     <dimen name="dim_110dp">110dp</dimen>
     <dimen name="dim_150dp">150dp</dimen>
+    <dimen name="dim_160dp">160dp</dimen>
     <dimen name="dim_225dp">225dp</dimen>
     <dimen name="dim_250dp">250dp</dimen>
     <dimen name="dim_400dp">400dp</dimen>

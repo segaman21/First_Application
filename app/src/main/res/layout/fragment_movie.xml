@@ -7,7 +7,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/color_bg">
+    android:background="@color/color_bg"
+    android:layout_margin="@dimen/dim_10dp">
 
     <ImageView
         android:id="@+id/ImageView_mask"
@@ -65,6 +66,7 @@
         app:layout_constraintLeft_toRightOf="@+id/four_star"/>
 
     <TextView
+        android:id="@+id/how_reviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/how_reviews"
@@ -89,7 +91,7 @@
         app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dim_6dp"
@@ -104,12 +106,13 @@
         app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
 
     <ImageView
+        android:id="@+id/isliked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/like"
         android:layout_marginTop="@dimen/dim_13dp"
         android:layout_marginLeft="@dimen/dim_110dp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/tv_age"
         app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
 
     <TextView
@@ -125,6 +128,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ImageView_mask" />
     <TextView
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/movies_time"
