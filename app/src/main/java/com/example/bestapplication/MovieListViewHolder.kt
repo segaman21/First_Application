@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class MovieListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val title = itemView.findViewById<TextView>(R.id.movie_name)
     val time = itemView.findViewById<TextView>(R.id.time)
     val tv_age = itemView.findViewById<TextView>(R.id.tv_age)
@@ -19,171 +19,58 @@ class MovieListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
     val thrid_star = itemView.findViewById<ImageView>(R.id.thrid_star)
     val four_star = itemView.findViewById<ImageView>(R.id.four_star)
     val five_star = itemView.findViewById<ImageView>(R.id.five_star)
-    fun setRate(rate: Int) {
-        when (rate) {
-            1 -> {
-                first_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                second_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-                thrid_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-                four_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-                five_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
 
-            }
-            2 -> {
-                first_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                second_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                thrid_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-                four_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-                five_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-            }
-            3 -> {
-                first_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                second_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                thrid_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                four_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-                five_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-            }
-            4 -> {
-                first_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                second_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                thrid_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                four_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                five_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_gray
-                        )
-                )
-            }
-            5 -> {
-                first_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                second_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                thrid_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                four_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-                five_star.setImageDrawable(
-                        ContextCompat.getDrawable(
-                                itemView.context,
-                                R.drawable.star_red
-                        )
-                )
-            }
-            else -> throw IllegalStateException("Illegal rating value")
+    fun setRate(rate: Float) {
+        if (rate >= 2.0F) {
+            setRedStar(first_star)
+        } else {
+            setGrayStar(first_star)
         }
-    }
-}
 
+        if (rate >= 4.0F) {
+            setRedStar(second_star)
+        } else {
+            setGrayStar(second_star)
+        }
+
+        if (rate >= 6.0F) {
+            setRedStar(thrid_star)
+        } else {
+            setGrayStar(thrid_star)
+        }
+
+        if (rate >= 8.0F) {
+            setRedStar(four_star)
+        } else {
+            setGrayStar(four_star)
+        }
+
+        if (rate == 10.0F) {
+            setRedStar(five_star)
+        } else {
+            setGrayStar(five_star)
+        }
+
+        if (rate > 10)
+            throw IllegalStateException("Illegal rating value")
+    }
+
+    private fun setGrayStar(starView: ImageView) {
+        starView.setImageDrawable(
+                ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.small_gray
+                )
+        )
+    }
+
+    private fun setRedStar(starView: ImageView) {
+        starView.setImageDrawable(
+                ContextCompat.getDrawable(
+                        itemView.context,
+                        R.drawable.small_red
+                )
+        )
+    }
+
+}

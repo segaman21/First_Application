@@ -159,7 +159,7 @@
             android:id="@+id/textView_cast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dim_16dp"
+            android:layout_marginStart="@dimen/dim_16dp"
             android:layout_marginTop="@dimen/dim_24dp"
             android:layout_marginEnd="@dimen/dim_16dp"
             android:text="@string/cast_title"
