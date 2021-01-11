@@ -1,8 +1,8 @@
-package com.example.bestapplication
+package com.example.bestapplication.moviedetails
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
+import com.example.bestapplication.R
 
 class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

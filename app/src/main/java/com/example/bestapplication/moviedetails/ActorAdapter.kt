@@ -1,36 +1,31 @@
-package com.example.bestapplication
+package com.example.bestapplication.moviedetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.bestapplication.R
 import com.example.bestapplication.data.Actor
 
-class ActorAdapter : RecyclerView.Adapter<actorViewHolder>(){
+class ActorAdapter : RecyclerView.Adapter<ActorViewHolder>(){
     val actorList =
         mutableListOf<Actor>()
 
-    fun setItems (items: MutableList<Actor>){
+    fun setItems (items: List<Actor>){
         actorList.clear()
         actorList.addAll(items)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): actorViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
        val view = LayoutInflater.from(parent.context)
         .inflate(R.layout.view_holder_actor,parent,false)
-       return actorViewHolder(view)
+       return ActorViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: actorViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
       val item = actorList[position]
-      holder.name_actor.text= item.name
-      Glide
-              .with(holder.itemView)
-              .load(item.picture)
-              .centerCrop()
-              .into(holder.photo_actor)
+      holder.onBind(item)
     }
     override fun getItemCount(): Int {
      return actorList.size

@@ -44,25 +44,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dim_16dp"
-            android:layout_marginTop="@dimen/dim_250dp"
+            android:layout_marginTop="@dimen/dim_150dp"
             android:padding="@dimen/dim_4dp"
             android:text="@string/age"
             android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/imageView_title"
+            app:layout_constraintTop_toTopOf="@+id/imageView_back" />
 
         <TextView
             android:id="@+id/tv_title_movie"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dim_16dp"
             android:layout_marginEnd="@dimen/dim_150dp"
             android:text="@string/name_film"
             android:textColor="@color/white"
             android:textSize="@dimen/text_Size40"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/textView_age" />
+            app:layout_constraintTop_toBottomOf="@id/textView_age"
+            app:layout_constraintStart_toStartOf="@id/textView_age"
+             />
 
         <TextView
             android:id="@+id/textView_genre"
@@ -122,6 +123,7 @@
             app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
         <TextView
+            android:id="@+id/reviews_film"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dim_8dp"

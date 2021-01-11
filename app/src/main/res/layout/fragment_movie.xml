@@ -12,13 +12,14 @@
 
     <ImageView
         android:id="@+id/ImageView_mask"
-        android:layout_width="wrap_content"
-        android:background="@color/bgColor"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="260dp"
         android:src="@drawable/mask_movie"
         android:paddingBottom="@dimen/dim_4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <ImageView
         android:id="@+id/first_star"
@@ -80,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@id/genere" />
     <TextView
         android:id="@+id/genere"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dim_150dp"
         android:layout_height="wrap_content"
         android:text="@string/fragment_genres"
         android:textColor="@color/text_color_red"
@@ -111,6 +112,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/like"
         android:layout_marginTop="@dimen/dim_13dp"
+        android:layout_marginRight="@dimen/dim_8dp"
         android:layout_marginLeft="@dimen/dim_110dp"
         app:layout_constraintStart_toEndOf="@+id/tv_age"
         app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
@@ -121,7 +123,6 @@
         android:layout_height="wrap_content"
         android:text="@string/name_film"
         android:textColor="@color/white"
-        android:layout_marginTop="@dimen/dim_6dp"
         android:layout_marginLeft="@dimen/dim_8dp"
         android:textStyle="bold"
         android:textSize="@dimen/text_Size12"

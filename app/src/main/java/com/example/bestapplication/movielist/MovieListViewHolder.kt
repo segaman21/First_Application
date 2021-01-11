@@ -1,10 +1,11 @@
-package com.example.bestapplication
+package com.example.bestapplication.movielist
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bestapplication.R
 
 class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val title = itemView.findViewById<TextView>(R.id.movie_name)
