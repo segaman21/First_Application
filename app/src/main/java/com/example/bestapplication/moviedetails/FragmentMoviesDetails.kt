@@ -8,14 +8,15 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
+import com.example.bestapplication.data.Actor
 import com.example.bestapplication.data.Genre
-import com.example.bestapplication.data.Movie
 import kotlinx.android.synthetic.main.fragment_movies_details.*
+import com.example.bestapplication.data.Movie as Movie
 
 class FragmentMoviesDetails : Fragment() {
+    private val viewModel = MovieDetailsViewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,16 +29,14 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val movie = arguments?.getParcelable<Movie>(MOVIE_KEY)
-        if (movie != null) {
-            bind(movie)
-        }
+        val movie = arguments?.getParcelable<Movie>(MOVIE_ID)
         initListeners()
+        movie?.let{bind(it)}
     }
 
 
     private fun bind(movie: Movie) {
-        movie.ratings.let { setRate(it) }
+        setRate(movie!!.ratings)
         Glide.with(requireActivity())
             .load(movie.backdrop)
             .placeholder(R.drawable.arrow)
@@ -123,11 +122,11 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     companion object {
-        private const val MOVIE_KEY = "movie"
+        private const val MOVIE_ID = "movie"
         fun newInstance(movie: Movie?): FragmentMoviesDetails {
             val fragment = FragmentMoviesDetails()
             val args = Bundle()
-            args.putParcelable(MOVIE_KEY, movie)
+            args.putParcelable(MOVIE_ID, movie)
             fragment.arguments = args
             return fragment
         }
