@@ -1,22 +1,26 @@
 package com.example.bestapplication.moviedetails
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
-import com.example.bestapplication.data.Actor
-import com.example.bestapplication.data.Genre
+import com.example.bestapplication.data.model.Actor
+import com.example.bestapplication.data.model.Genre
+import com.example.bestapplication.data.model.MovieFull
 import kotlinx.android.synthetic.main.fragment_movies_details.*
-import com.example.bestapplication.data.Movie as Movie
+
 
 class FragmentMoviesDetails : Fragment() {
-    private val viewModel = MovieDetailsViewModel()
+    private val viewModel by viewModels<MovieDetailsViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,30 +33,46 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val movie = arguments?.getParcelable<Movie>(MOVIE_ID)
+        val movieId = arguments?.getInt(MOVIE_ID)
         initListeners()
-        movie?.let{bind(it)}
+        initObservers(movieId)
+
+        viewModel.getActors(requireActivity(), movieId!!)
     }
 
+    private fun initObservers(movieId: Int?) {
+        var actors: List<Actor>? = null
+        viewModel.moviesLiveData.observe(viewLifecycleOwner, {
+            bind(it, actors)
+        })
 
-    private fun bind(movie: Movie) {
+        viewModel.actorsLiveData.observe(viewLifecycleOwner, {
+            actors = it
+            viewModel.getMovies(requireActivity(), movieId!!)
+            
+        })
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun bind(movie: MovieFull?, actors: List<Actor>?) {
         setRate(movie!!.ratings)
+        val posterUrl = "https://image.tmdb.org/t/p/original/${movie.backdrop}"
         Glide.with(requireActivity())
-            .load(movie.backdrop)
+            .load(posterUrl)
             .placeholder(R.drawable.arrow)
             .centerCrop()
             .into(imageView_title)
-        textView_age.text = "${movie.minimumAge.toString()} +"
+        textView_age.text = if (movie.minimumAge) "+16" else "+13"
         tv_title_movie.text = movie.title
         reviews_film.text = "${movie.numberOfRatings} reviews"
         textView_story.text = movie.overview
-        textView_genre.text = movie.genres.let { setGenres(it) }
+        textView_genre.text = setGenres(movie.genres)
 
-        val actorAdapter = ActorAdapter()
-        recycler_name.adapter = actorAdapter
-        recycler_name.layoutManager =
+        val movieDetailsAdapter = ActorAdapter(actors!!)
+        recycler_name.adapter = movieDetailsAdapter
+        val linearLayoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        actorAdapter.setItems(movie.actors)
+        recycler_name.layoutManager = linearLayoutManager
     }
 
 
@@ -123,10 +143,10 @@ class FragmentMoviesDetails : Fragment() {
 
     companion object {
         private const val MOVIE_ID = "movie"
-        fun newInstance(movie: Movie?): FragmentMoviesDetails {
+        fun newInstance(moviePreview: Int): FragmentMoviesDetails {
             val fragment = FragmentMoviesDetails()
             val args = Bundle()
-            args.putParcelable(MOVIE_ID, movie)
+            args.putInt(MOVIE_ID, moviePreview)
             fragment.arguments = args
             return fragment
         }

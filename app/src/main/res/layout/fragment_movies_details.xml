@@ -175,7 +175,6 @@
             android:id="@+id/recycler_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/view_holder_actor"
             android:orientation="horizontal"
             android:layout_marginStart="@dimen/dim_16dp"
             android:layout_marginTop="@dimen/dim_8dp"
