@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/color_bg">
+
+    <ImageView
+        android:id="@+id/ImageView_mask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mask_movie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/first_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/small_red"
+        android:layout_marginLeft="@dimen/dim_8dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        app:layout_constraintTop_toBottomOf="@id/genere"
+        app:layout_constraintLeft_toLeftOf="@+id/ImageView_mask"/>
+
+    <ImageView
+        android:id="@+id/second_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/small_red"
+        android:layout_marginLeft="@dimen/dim_2dp"
+        app:layout_constraintTop_toTopOf="@+id/first_star"
+        app:layout_constraintLeft_toRightOf="@+id/first_star"/>
+
+    <ImageView
+        android:id="@+id/thrid_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/small_red"
+        android:layout_marginLeft="@dimen/dim_2dp"
+        app:layout_constraintTop_toTopOf="@+id/second_star"
+        app:layout_constraintLeft_toRightOf="@+id/second_star"/>
+
+    <ImageView
+        android:id="@+id/four_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/small_red"
+        android:layout_marginLeft="@dimen/dim_2dp"
+        app:layout_constraintTop_toTopOf="@+id/thrid_star"
+        app:layout_constraintLeft_toRightOf="@+id/thrid_star"/>
+    <ImageView
+        android:id="@+id/five_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/small_gray"
+        android:layout_marginLeft="@dimen/dim_2dp"
+        app:layout_constraintTop_toTopOf="@+id/four_star"
+        app:layout_constraintLeft_toRightOf="@+id/four_star"/>
+
+    <TextView
+        android:id="@+id/how_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_reviews"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_Size6"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/dim_6dp"
+        android:layout_marginTop="@dimen/dim_4dp"
+        app:layout_constraintStart_toEndOf="@+id/five_star"
+        app:layout_constraintTop_toBottomOf="@id/genere" />
+    <TextView
+        android:id="@+id/genere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_genres"
+        android:textColor="@color/text_color_red"
+        android:textSize="@dimen/text_Size6"
+        android:layout_marginLeft="@dimen/dim_8dp"
+        android:layout_marginTop="@dimen/dim_225dp"
+        app:layout_constraintStart_toStartOf="@+id/ImageView_mask"
+        app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
+
+    <TextView
+        android:id="@+id/tv_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dim_6dp"
+        android:layout_marginTop="@dimen/dim_8dp"
+        android:background="@drawable/bg_age"
+        android:padding="@dimen/dim_4dp"
+        android:text="@string/age"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_Size10"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/ImageView_mask"
+        app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
+
+    <ImageView
+        android:id="@+id/isliked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/like"
+        android:layout_marginTop="@dimen/dim_13dp"
+        android:layout_marginLeft="@dimen/dim_110dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_age"
+        app:layout_constraintTop_toTopOf="@+id/ImageView_mask" />
+
+    <TextView
+        android:id="@+id/movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_film"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dim_8dp"
+        android:layout_marginLeft="@dimen/dim_8dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_Size12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageView_mask" />
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movies_time"
+        android:textAllCaps="true"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_Size6"
+        android:paddingBottom="@dimen/dim_4dp"
+        app:layout_constraintTop_toBottomOf="@+id/movie_name"
+        app:layout_constraintLeft_toLeftOf="@id/movie_name"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
